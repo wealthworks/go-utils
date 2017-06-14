@@ -28,6 +28,7 @@ func Quit(quit chan<- struct{}, done <-chan struct{}) {
 
 // reap with special action at set intervals.
 func reap(interval time.Duration, cf CleanFunc, quit <-chan struct{}, done chan<- struct{}) {
+	log.Printf("starting reaper by inerval %s ...", interval)
 	ticker := time.NewTicker(interval)
 
 	defer func() {
